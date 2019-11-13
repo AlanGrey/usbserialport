@@ -21,7 +21,7 @@ class UsbReadWriteRunnable(private val usbSerialPort: UsbSerialPort,
     }
     
     override fun reading() {
-        val length = usbSerialPort.read(readBuffer.array(), READ_WAIT_MILLIS)
+        val length = usbSerialPort.read(readBuffer.array(), READ_WAIT_MILLIS * 10)
         if (length > 0) {
             val data = ByteArray(length)
             readBuffer.get(data, 0, length)
